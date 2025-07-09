@@ -1,0 +1,17 @@
+-- 1. Produtos mais caros na categoria "eletrônicos"
+SELECT TOP 5 nome, preco
+FROM produtos
+WHERE categoria = 'eletrônicos'
+ORDER BY preco DESC;
+
+-- 2. Clientes que mais gastaram
+SELECT TOP 3 c.nome, SUM(v.valor) AS total_gasto
+FROM clientes c
+JOIN vendas v ON c.cliente_id = v.cliente_id
+GROUP BY c.nome
+ORDER BY total_gasto DESC;
+
+-- 3. Categorias únicas de produtos
+SELECT DISTINCT TOP 4 categoria
+FROM produtos
+ORDER BY categoria ASC;
